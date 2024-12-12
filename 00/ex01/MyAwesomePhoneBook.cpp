@@ -6,7 +6,7 @@
 /*   By: cmakario <cmakario@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:45:44 by cmakario          #+#    #+#             */
-/*   Updated: 2024/12/12 23:51:15 by cmakario         ###   ########.fr       */
+/*   Updated: 2024/12/13 00:09:26 by cmakario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,24 @@ public:
 		
 		std::cout << "Enter darkest secret: ";
 		std::getline(std::cin, darkestSecret);
+	}
+
+	void		displayShortContact(int index) const
+	{
+		std::cout << std::setw(10) << std:: right << index << "|";
+		std::cout << std::setw(10) << std:: right << index << (firstName.length() > 10 ? firstName.substr(0,9) + "." : firstName) << "|";
+		std::cout << std::setw(10) << std:: right << index << (lastName.length() > 10 ? lastName.substr(0,9) + "." : lastName) << "|";
+		std::cout << std::setw(10) << std:: right << index << (nickName.length() > 10 ? nickName.substr(0,9) + "." : nickName) << "|";
 		
 	}
+
+	void		displayFullContact() const
+	{
+		std::cout << "First Name: " << firstName << std::endl;
+		std::cout << "Last Name: " << lastName << std::endl;
+		std::cout << "Nickame: " << nickName << std::endl;
+		std::cout << "Phone Number: " << phoneNumber << std::endl;
+		std::cout << "Darkest Secret: " << darkestSecret << std::endl;
+	}
 };
+
