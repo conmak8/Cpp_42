@@ -1,16 +1,13 @@
-
-
-
 #include <iostream>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int i,j=0;
+	int	i,j=0;
 
 	if (argc == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		 return 0;
+		return (0);
 	}
 	for (i = 1; i < argc; i++)
 	{
@@ -19,7 +16,7 @@ int main(int argc, char **argv)
 		{
 			char c = argv[i][j];
 			if (islower(argv[i][j]))
-				c -= 32;
+				c = toupper(c);
 			std::cout << c;
 			j++;
 		}
