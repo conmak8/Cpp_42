@@ -6,7 +6,7 @@
 /*   By: cmakario <cmakario@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:45:44 by cmakario          #+#    #+#             */
-/*   Updated: 2024/12/13 00:09:26 by cmakario         ###   ########.fr       */
+/*   Updated: 2024/12/13 11:16:47 by cmakario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,64 @@ public:
 		std::cout << "Nickame: " << nickName << std::endl;
 		std::cout << "Phone Number: " << phoneNumber << std::endl;
 		std::cout << "Darkest Secret: " << darkestSecret << std::endl;
+	}
+};
+
+class PhoneBook
+{
+private:
+	Contact contacts[8];
+	int	contactCount;
+	int	nextIndex;
+public:
+	PhoneBook() : contactCount(0), nextIndex(0) {}	// *Constractor
+
+	// Method to add a new contact
+	void		addContacts()
+	{
+		contacts[nextIndex].setContactInfo();
+
+		nextIndex = (nextIndex + 1) % 8;
+		if (contactCount < 8)
+			contactCount++;
+	}
+	
+	void		displayContacts() const
+	{
+		std::cout << std::setw(10) << std::right << "Index" << "|"
+				  << std::setw(10) << std::right << "First Name" << "|"
+				  << std::setw(10) << std::right << "Last Name" << "|"
+				  << std::setw(10) << std::right << "Nickname" << std::endl;
+
+		for (int i = 0; i < contactCount; i++)
+		{
+			contacts[i].displayShortContact(i);
+		}
+	}
+
+	// Method to search for a contact
+	void		searchContact() const
+	{
+		int	index;
+
+		displayContacts();
+
+		std::cout << "Enter the index of the contact you want to view: ";
+		std::cin >> index;
+
+		if (std::cin.fail() || index < 0 || index >= contactCount)
+		{
+			std::cout << "Invalid index." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			return;
+		}
+		
+		// Clear input buffer
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		contacts[index].displayFullContact();
+		
 	}
 };
 
