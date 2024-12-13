@@ -6,7 +6,7 @@
 /*   By: cmakario <cmakario@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:45:44 by cmakario          #+#    #+#             */
-/*   Updated: 2024/12/13 11:16:47 by cmakario         ###   ########.fr       */
+/*   Updated: 2024/12/13 11:24:56 by cmakario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,3 +122,25 @@ public:
 	}
 };
 
+int	main()
+{
+	PhoneBook phoneBook;
+	std::string command;
+
+	while (true)
+	{
+		std::cout << "Enter command (ADD/SEARCH/EXIT): ";
+		std::getline(std::cin, command);
+
+		if (command == "ADD")
+			phoneBook.addContacts();
+		else if (command == "SEARCH")
+			phoneBook.searchContact();
+		else if (command == "EXIT")
+			break;
+		else
+			std::cout << "Invalid command." << std::endl;
+	}
+	return (0);
+	
+}
